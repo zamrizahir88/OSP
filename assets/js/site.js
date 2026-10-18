@@ -8,36 +8,22 @@ const wa = (text) => `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   if (!toggle || !menu) return;
-  menu.querySelectorAll('li').forEach((li, i) => li.style.setProperty('--i', i));
   const set = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Close' : 'Menu';
     menu.hidden = !open;
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open) menu.querySelector('.menu-close')?.focus();
   };
-  toggle.addEventListener('click', () => set(menu.hidden));
+  toggle.addEventListener('click', () => set(true));
+  menu.querySelector('.menu-close')?.addEventListener('click', () => { set(false); toggle.focus(); });
+  menu.addEventListener('click', (e) => { if (e.target === menu) set(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { set(false); toggle.focus(); } });
-})();
-
-// ---------- header takes the colours of the chapter beneath it ----------
-(() => {
-  const chapters = document.querySelectorAll('[data-ink]');
-  if (!chapters.length || !('IntersectionObserver' in window)) return;
-  const root = document.documentElement.style;
-  const io = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      root.setProperty('--header-ink', entry.target.dataset.ink);
-      root.setProperty('--header-bg', entry.target.dataset.bg || 'transparent');
-    }
-  }, { rootMargin: '0px 0px -94% 0px', threshold: 0 });
-  chapters.forEach((el) => io.observe(el));
 })();
 
 // ---------- reveal once on entry ----------
 (() => {
   // lists and tables that are not marked in the markup still arrive row by row
-  document.querySelectorAll('.faq-list, .prose, .hours tbody, .contact-lines, .team').forEach((group) => {
+  document.querySelectorAll('.faq-list, .team, .entries, .prices, .big-list, .timeline, .articles, .gallery, .video-row, .grid-3, .grid-4, .quick-grid, .contact-cards').forEach((group) => {
     group.setAttribute('data-stagger', '');
     [...group.children].forEach((el) => el.setAttribute('data-reveal', ''));
   });

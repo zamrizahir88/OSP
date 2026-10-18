@@ -12,16 +12,17 @@
 <section class="chapter f-bone" data-ink="#0e1416" data-bg="#f1f1ee" aria-labelledby="find-title">
   <div class="contact-grid">
     <div class="c-main">
-      <h2 class="head" id="find-title" data-reveal>Find us</h2>
-      <div class="contact-lines" style="margin-top:2rem" data-stagger>
-        <div data-reveal><a class="big" href="https://wa.me/60124077401" target="_blank" rel="noopener">012-407 7401</a><p style="margin-top:.5rem">WhatsApp: the quickest way to book</p></div>
-        <div data-reveal><a class="big" href="tel:+60124137401">012-413 7401</a><p style="margin-top:.5rem">Call us during opening hours</p></div>
-        <div data-reveal><p class="lead">No 5A Susuran Sena, Taman Sena, 06010 Changlun, Kedah</p><p style="margin-top:.75rem"><a class="arrow-link" href="https://www.google.com/maps/search/?api=1&amp;query=No+5A+Susuran+Sena+Taman+Sena+06010+Changlun+Kedah" target="_blank" rel="noopener">Directions in Google Maps <span aria-hidden="true">→</span></a></p></div>
+      <h2 id="find-title" style="margin-bottom:1.5rem">Get in touch</h2>
+      <div class="contact-cards">
+        <div class="contact-card"><span class="icon-box"><svg class="i"><use href="#i-chat"/></svg></span><div><h3>WhatsApp, the quickest way to book</h3><a class="big" href="https://wa.me/60124077401" target="_blank" rel="noopener">012-407 7401</a></div></div>
+        <div class="contact-card"><span class="icon-box"><svg class="i"><use href="#i-phone"/></svg></span><div><h3>Call us during opening hours</h3><a class="big" href="tel:+60124137401">012-413 7401</a></div></div>
+        <div class="contact-card"><span class="icon-box"><svg class="i"><use href="#i-pin"/></svg></span><div><h3>Address</h3><p class="big" style="font-size:1.2rem">No 5A Susuran Sena, Taman Sena, 06010 Changlun, Kedah</p><p style="margin-top:.5rem"><a class="arrow-link" href="https://www.google.com/maps/search/?api=1&amp;query=No+5A+Susuran+Sena+Taman+Sena+06010+Changlun+Kedah" target="_blank" rel="noopener">Directions in Google Maps <span aria-hidden="true">→</span></a></p></div></div>
       </div>
     </div>
-    <div class="c-side" data-reveal>
-      <p class="status" data-open-status>Open Saturday to Thursday</p>
-      <table class="hours" style="margin-top:1rem">
+    <div class="c-side hours-card">
+      <h3>Opening hours</h3>
+      <p class="status" data-open-status style="margin-top:.5rem">Open Saturday to Thursday</p>
+      <table class="hours">
         <caption class="sr-only">Opening hours</caption>
         <tbody>
           <tr data-day="6"><th scope="row">Saturday</th><td>9am – 6pm</td></tr>
@@ -56,7 +57,7 @@
       <label>Preferred time<select name="Time"><option>Morning, 9am to 12pm</option><option>Afternoon, 12pm to 3pm</option><option>Late afternoon, 3pm to 6pm</option></select></label>
       <label>Physiotherapist<select name="Physiotherapist"><option>No preference</option><option>Female, please</option><option>Male, please</option></select></label>
       <label class="full">What is the problem?<textarea name="Problem"></textarea></label>
-      <button class="button button-ink" type="submit">Send on WhatsApp</button>
+      <button class="button button-wa" type="submit"><svg class="i i-fill"><use href="#i-wa"/></svg>Send on WhatsApp</button>
       <p class="note">Your details go only to OSP's WhatsApp. This website does not store them.</p>
     </form>
   </div>

@@ -9,7 +9,6 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const layout = fs.readFileSync(path.join(root, 'src/layout.html'), 'utf8');
 const pagesDir = path.join(root, 'src/pages');
 const cta = fs.readFileSync(path.join(root, 'src/cta.html'), 'utf8');
-const fields = { teal: ['f-teal', '#ffffff', '#29708a'], ink: ['f-ink', '#f1f1ee', '#0e1416'] };
 
 for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) {
   const raw = fs.readFileSync(path.join(pagesDir, file), 'utf8');
@@ -24,9 +23,14 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) 
     .replaceAll('{{file}}', file === 'index.html' ? '' : file)
     .replace('{{content}}', body);
 
-  // inner pages close with the booking band; meta.cta picks its field, false leaves it out
-  const band = meta.cta === false ? '' : (() => { const [cls, ink, bg] = fields[meta.cta || 'teal']; return cta.replace('{{ctaField}}', cls).replace('{{ctaInk}}', ink).replace('{{ctaBg}}', bg); })();
-  html = html.replace('{{cta}}', band);
+  // inner pages close with the booking card; "cta": false leaves it out
+  html = html.replace('{{cta}}', meta.cta === false ? '' : cta);
+
+  // breadcrumb above the first heading of inner pages
+  if (file !== 'index.html') {
+    const name = meta.title.split(' | ')[0];
+    html = html.replace('<h1 data-rise>', `<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>${name}</span></nav>\n  <h1 data-rise>`);
+  }
 
   if (meta.nav) html = html.replaceAll(`data-nav="${meta.nav}"`, `data-nav="${meta.nav}" aria-current="page"`);
 

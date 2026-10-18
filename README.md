@@ -27,7 +27,7 @@ python -m http.server 5173
 
 ## Design
 
-The design follows the taste-skill "colour chapters" direction (seed 1926194695) in the OSP brand palette: logo teal, ink, bone, deep teal and mist. The typeface is Schibsted Grotesk. Each section is one flat field of colour, and the header takes the colour of the section underneath it.
+Clean medical style in the OSP brand palette (logo teal, deep teal, soft teal tints): rounded cards, pill buttons with icons, Plus Jakarta Sans for headings and Inter for body text. One left-aligned 1200px grid on every page.
 
 The home page has one interactive feature: the "Where does it hurt?" body map.
 
