@@ -1,0 +1,8 @@
+# client originals and raw downloads (not served)
+_source/
+assets/northern-university-of-malaysia.jpg
+assets/paddy-field-1-in-langgar-alor-setar.jpg
+
+# tooling output
+.taste-skill/
+.claude/
